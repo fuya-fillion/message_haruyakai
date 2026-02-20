@@ -55,12 +55,6 @@
                 gap: 10px;
                 margin-bottom: 20px;
             }
-            
-            .message-card .flex-container,
-            .message-card .normal-text {
-            position: relative;
-            z-index: 2;
-            }
 
             @keyframes pyonpyon {
                 0% { transform: translateY(0px); }
@@ -68,11 +62,18 @@
                 100% { transform: translateY(0px); }
             }
 
-            .animated-img {
-                width: 300px;
-                margin-top: 20px;
-                animation: pyonpyon 1s infinite;
-                position: absolute; bottom: 10px; right: 0px;
+            .shiori-right {
+                position: absolute;
+                bottom: -30px;
+                right: -100px;
+                width: 390px;
+            }
+
+            .shiori-left {
+                position: absolute;
+                bottom: -30px;
+                left: -10px;
+                width: 390px;
             }
 
             .countdown-box {
@@ -88,12 +89,21 @@
                 font-size: 24px;
                 margin: 10px 0;
             }
-            
-            @media (orientation: portrait) {
+
+            .message-card .flex-container,
+            .message-card .normal-text {
+            position: relative;
+            z-index: 2;
+            }
+
+            @media (max-width: 900px) and (orientation: portrait) {
                 .flex-container {
                     flex-direction: column;
                     align-items: center;
                     gap: 0px;
+                }
+                .message-card {
+                     padding-bottom: 120px; 
                 }
                 .impact-text1 {
                     font-size: 18px;
@@ -104,9 +114,20 @@
                 .normal-text {
                     font-size: 10px;
                 }
+                .shiori-right {
+                    width: 300px;
+                    right: -100px;
+                    bottom: auto;
+                    top: 100px;
+                }
+                .shiori-left {
+                    width: 300px;
+                    left: -10px;
+                    bottom: -30px;
+                }
             }
 
-            @media (max-width: 600px) {
+            @media (max-width: 900px) and (orientation: landscape) {
                     .flex-container {
                         gap: 5px;
                     }
@@ -148,8 +169,8 @@
                 場ゲロとかしちゃうけどなんだかんだ世話焼きで優しいの<br>すごくいい子だな〜って思ってる。<br>これからもいろんなとこいこうね
             </div>
 
-            <img src="しおり.png" width="390" style="position: absolute; bottom: -30px; right: -100px;" alt="キャラクター">
-            <img src="しおり2.png" width="390" style="position: absolute; bottom: -30px; left: -10px;" alt="キャラクター">
+            <img src="しおり.png" class="shiori-right" alt="キャラクター">
+            <img src="しおり2.png" class="shiori-left" alt="キャラクター">
         </div>
 
         <h2 id="countdown-title">
