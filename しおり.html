@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>No.202603-04 shiori</title>
+        <link rel="preconnect" href="">
+        <link rel="preconnect" href="" crossorigin>
+        <link href="" rel="stylesheet">
+        <style>
+            @import url('');
+
+            body {
+                font-family: 'Hachi Maru Pop', cursive, sans-serif;
+                background-color: #fff4fc; 
+                color: #333;
+                text-align: center;
+                margin: 0;
+                padding: 20px;
+            }
+
+            .message-card {
+                background-color: white;
+                border-radius: 5px;
+                padding: 30px 20px;
+                padding-bottom: 90px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                margin-top: 20px;
+                position: relative;
+            }
+
+            .impact-text1 {
+                font-size: 30px;
+                font-weight: bold;
+                color: #ff0080;
+            }
+
+            .impact-text2 {
+                font-size: 30px;
+                font-weight: bold;
+                color: #ff0000; 
+                margin-bottom: 20px;
+            }
+
+            .normal-text {
+                font-size: 18px;
+                line-height: 1.8; 
+            }
+
+            .flex-container {
+                display: flex;
+                align-items: baseline;
+                justify-content: center;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            @keyframes pyonpyon {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-30px); }
+                100% { transform: translateY(0px); }
+            }
+
+            .animated-img {
+                width: 300px;
+                margin-top: 20px;
+                animation: pyonpyon 1s infinite;
+                position: absolute; bottom: 10px; right: 0px;
+            }
+
+            .countdown-box {
+                background-color: #87cefa;
+                color: white;
+                border-radius: 15px;
+                padding: 20px;
+                margin-top: 30px;
+                font-weight: bold;
+            }
+
+            #timer {
+                font-size: 24px;
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1>
+            <div class="impact_text1">
+                SHIORI
+            </div>
+        </h1>
+
+        <div class="message-card">
+
+            <div class="flex-container">
+                <div class="normal-text">
+                    すごい明るくて、いつも笑ってくれてる
+                </div>
+
+                <div class="impact-text1">
+                    志緒里
+                </div>
+            </div>
+
+            <div class="normal-text" style="margin-bottom: 100px;">
+                場ゲロとかしちゃうけどなんだかんだ世話焼きで優しいの<br>すごくいい子だな〜って思ってる。<br>これからもいろんなとこいこうね
+            </div>
+
+            <img src="しおり.png" width="390" style="position: absolute; bottom: -30px; right: -100px;" alt="キャラクター">
+            <img src="しおり2.png" width="390" style="position: absolute; bottom: -30px; left: -10px;" alt="キャラクター">
+        </div>
+
+        <h2 id="countdown-title">
+            <div class="impact-text2">大阪旅行</div><div class="normal-text">まであと...</div>
+        </h2>
+
+        <div class="countdown-box">
+            <div id="timer">計算中...</div>
+        </div>
+
+        <script>
+            var targetDate = new Date("2026/03/19 00:00:00").getTime();
+
+            var x = setInterval(function() {
+                var now = new Date().getTime();
+                var distance = targetDate - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                if (distance > 0) {
+                    document.getElementById("timer").innerText = days + "日 " + hours + "時間 " + minutes + "分 " + seconds + "秒";
+                } else {
+                    clearInterval(x);
+                    document.getElementById("countdown-title").style.display = "none";
+                    document.getElementById("timer").innerHTML = '<a href="大阪.html" class="secret-link"> 大阪のしおり！ </a>';
+                }
+            }, 1000);
+        </script>
+    </body>
+</html>
