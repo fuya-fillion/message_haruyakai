@@ -301,11 +301,6 @@
                     transform: scale(0.5);
                     transition: all 0.5s ease 0s;
                 }
-                .absol-container:hover .mega-absol-img { 
-                    opacity: 0;
-                    transform: scale(0.5);
-                    transition: all 0.5s ease 0.8s;
-                }
                 .absol-container:hover .f1 { animation: parapara 0.2s forwards 0.0s; }
                 .absol-container:hover .f2 { animation: parapara 0.2s forwards 0.1s; }
                 .absol-container:hover .f3 { animation: parapara 0.2s forwards 0.2s; }
@@ -319,6 +314,9 @@
                     transform: scale(1) rotate(0deg);
                     filter: brightness(1);
                     transition-delay: 0.8s;
+                    opacity: 0;
+                    transform: scale(0.5);
+                    transition: all 0.5s ease 0.8s;
                 }
                 #timer a:hover {
                     transform: scale(1.1);
@@ -339,9 +337,6 @@
                     opacity: 0;transform: scale(0.5);
                     transition: all 0.5s ease 0s;
                 }
-                .absol-container.is-evolved .mega-absol-img { 
-                    transition: all 0.5s ease 0.8s;
-                }
                 .absol-container.is-evolved .f1 { animation: parapara 0.2s forwards 0.0s; }
                 .absol-container.is-evolved .f2 { animation: parapara 0.2s forwards 0.1s; }
                 .absol-container.is-evolved .f3 { animation: parapara 0.2s forwards 0.2s; }
@@ -355,6 +350,7 @@
                     transform: scale(1) rotate(0deg);
                     filter: brightness(1);
                     transition-delay: 0.8s;
+                    transition: all 0.5s ease 0s;
                 }
                 #timer a:active {
                     transform: scale(1.05);
@@ -391,7 +387,7 @@
                 <img src="kanta1-2.png" class="wave-img" ontouchstart="" alt="波">
                 <img src="kanta1-3.png" class="devil-img" ontouchstart="" alt="キャラクター">
             </div>
-            <div div class="absol-container" onclick="this.classList.toggle('is-evolved')"　ontouchstart="">
+            <div class="absol-container" onclick="this.classList.add('is-evolved'); setTimeout(() => { this.classList.remove('is-evolved'); }, 4500);" ontouchstart="">
                 <img src="kanta2-1.png" class="absol-img" alt="キャラクター">
                 <div class="effect-frames">
                     <img src="Mega1.png" class="frame f1">
