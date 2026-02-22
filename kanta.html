@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>No.202603-01 kanta</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DotGothic16&family=Hachi+Maru+Pop&family=Hina+Mincho&family=Kaisei+Decol:wght@400;700&family=Kiwi+Maru:wght@400;500&family=Mochiy+Pop+P+One&family=Shippori+Mincho:wght@400;700&family=Yusei+Magic&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            html, body {
+                overflow-x: hidden;
+                width: 100%;
+            }
+
+            @import url('');
+
+            @keyframes updown {
+                0%   { transform: translateY(0px); }
+                50%  { transform: translateY(-20px); } 
+                100% { transform: translateY(0px); }
+            }
+
+            @keyframes updown2 {
+                0%   { transform: translateY(0px); }
+                50%  { transform: translateY(-15px); } 
+                100% { transform: translateY(0px); }
+            }
+
+            @keyframes wave-rock {
+                0%   { transform: rotate(0deg) translateY(0px); }
+                25%  { transform: rotate(3deg) translateY(-3px); }
+                50%  { transform: rotate(0deg) translateY(0px); }
+                75%  { transform: rotate(-3deg) translateY(-3px); }
+                100% { transform: rotate(0deg) translateY(0px); }
+            }
+
+            @keyframes parapara {
+                0%   { opacity: 0; }
+                30%  { opacity: 1; }
+                70%  { opacity: 1; }
+                100% { opacity: 0; }
+            }
+
+            body {
+                font-family: 'Kaisei Decol', cursive;
+                background-color: #f3fff1; 
+                color: #000000;
+                text-align: center;
+                margin: 0;
+                padding: 20px;
+                overflow-x: hidden;
+            }
+
+            .message-card {
+                background-color: white;
+                border-radius: 5px;
+                padding: 30px 20px;
+                padding-bottom: 90px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                margin-top: 20px;
+                margin: 20px auto;
+                position: relative;
+            }
+
+            .impact-text {
+                font-family: 'Kaisei Decol', cursive;
+                font-size: 50px;
+                font-weight: bold;
+                color: #00cd33;
+            }
+
+            .impact-text1 {
+                font-family: 'Yusei Magic', serif;
+                font-size: 30px;
+                font-weight: bold;
+                color: #00cd33;
+            }
+
+            .impact-text2 {
+                font-family: 'Kaisei Decol', serif;
+                font-size: 30px;
+                font-weight: bold;
+                color: #ff0000; 
+                margin-bottom: 20px;
+            }
+
+            .normal-text {
+                font-family: 'Zen Maru Gothic', sans-serif;
+                font-size: 18px;
+                line-height: 1.8; 
+            }
+
+            .flex-container {
+                display: flex;
+                align-items: baseline;
+                justify-content: center;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .ship-img {
+                display: inline-block;
+                position: absolute;
+                bottom: -30px;
+                right: -100px;
+                width: 390px;
+                -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
+            }
+
+            .wave-img {
+                display: inline-block;
+                position: absolute;
+                bottom: -70px;
+                right: -70px;
+                width: 390px;
+                -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
+            }
+
+            .devil-img {
+                display: inline-block;
+                position: absolute;
+                bottom: -30px;
+                right: 40px;
+                width: 390px;
+                -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
+            }
+
+            .man-u-box {
+                position: absolute;
+                bottom: 0px;
+                right: 20px;
+                width: 390px;
+                display: inline-block;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                user-select: none; 
+                -webkit-user-drag: none;
+            }
+
+            .absol-container {
+                position: absolute;
+                bottom: -180px;
+                left: -10px;
+                width: 390px;
+                height: 390px;
+                display: inline-block;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                user-select: none; 
+                -webkit-user-drag: none;
+            }
+
+            .absol-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                transition: all 0.5s ease 3s;
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+
+            .mega-absol-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                transition: all 0.5s ease 3s;
+                opacity: 0;
+                transform: scale(0.5) rotate(-20deg);
+            }
+
+            .effect-frames {
+                position: absolute;
+                top: 0; left: 0; width: 100%; height: 100%;
+                pointer-events: none;
+                z-index: 5;
+            }
+
+            .frame {
+                position: absolute;
+                top: 0; left: 0; width: 100%; height: 100%;
+                object-fit: contain;
+                opacity: 0;
+            }
+
+            .countdown-box {
+                background: linear-gradient(45deg, #87cefa 0%, #3239ff 100%);
+                background-color: #87cefa;
+                color: white;
+                border-radius: 15px;
+                padding: 20px;
+                margin-top: 30px;
+                font-weight: bold;
+            }
+
+            #timer {
+                font-family: 'DotGothic16', sans-serif;
+                font-size: 24px;
+                margin: 10px 0;
+            }
+
+            #timer a {
+                display: inline-block;
+                transition: transform 0.3s ease;
+            }
+
+            .secret-link {
+                display: inline-block;
+                background: linear-gradient(45deg, #ffb9f6 0%, #ff0fd3 100%);
+                background-color: #ff69b4;
+                color: white;
+                padding: 15px 30px;
+                border-radius: 30px;
+                text-decoration: none;
+                font-size: 20px;
+            }
+
+            .message-card .flex-container,
+            .message-card .normal-text {
+            position: relative;
+            z-index: 2;
+            }
+
+            @media (max-width: 900px) and (orientation: portrait) {
+                .flex-container {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0px;
+                }
+                .message-card {
+                     padding-bottom: 120px; 
+                }
+                .impact-text1 {
+                    font-size: 25px;
+                }
+                .impact-text2 {
+                    font-size: 20px;
+                }
+                .normal-text {
+                    font-size: 16px;
+                }
+                .man-u-box {
+                    width: 50px;
+                    right: -50px;
+                    bottom: 0px;
+                }
+                .absol-container {
+                    width: 350px;
+                    height: 350px;
+                    left: -60px;
+                    bottom: -150px;
+                }
+            }
+
+            @media (max-width: 900px) and (orientation: landscape) {
+                    .flex-container {
+                        gap: 5px;
+                    }
+                    .impact-text1 {
+                        font-size: 25px;
+                    }
+                    .impact-text2 {
+                        font-size: 20px;
+                    }
+                    .normal-text {
+                        font-size: 16px;
+                    }
+                    .man-u-box {
+                        bottom: -20px;
+                        right: -50px;
+                        width: 250px;
+                    }
+                    .absol-container {
+                        bottom: -150px;
+                        left: -50px;
+                        width: 390px;
+                        height: 390px;
+                    }
+            }
+            
+            @media (hover: hover) {
+                .man-u-box:hover .devil-img {
+                    animation: updown 1s infinite ease-in-out;
+                }
+                .man-u-box:hover .wave-img {
+                    animation: updown2 2s infinite ease-in-out;
+                }
+                .man-u-box:hover .ship-img {
+                    animation: wave-rock 2s infinite ease-in-out;
+                }
+                .absol-container:hover .absol-img { 
+                    opacity: 0;
+                    transform: scale(0.5);
+                    transition: all 0.5s ease 0s;
+                }
+                .absol-container:hover .mega-absol-img { 
+                    opacity: 0;
+                    transform: scale(0.5);
+                    transition: all 0.5s ease 0.8s;
+                }
+                .absol-container:hover .f1 { animation: parapara 0.2s forwards 0.0s; }
+                .absol-container:hover .f2 { animation: parapara 0.2s forwards 0.1s; }
+                .absol-container:hover .f3 { animation: parapara 0.2s forwards 0.2s; }
+                .absol-container:hover .f4 { animation: parapara 0.2s forwards 0.3s; }
+                .absol-container:hover .f5 { animation: parapara 0.2s forwards 0.4s; }
+                .absol-container:hover .f6 { animation: parapara 0.2s forwards 0.5s; }
+                .absol-container:hover .f7 { animation: parapara 0.2s forwards 0.6s; }
+                .absol-container:hover .f8 { animation: parapara 0.2s forwards 0.7s; }
+                .absol-container:hover .mega-absol-img {
+                    opacity: 1;
+                    transform: scale(1) rotate(0deg);
+                    filter: brightness(1);
+                    transition-delay: 0.8s;
+                }
+                #timer a:hover {
+                    transform: scale(1.1);
+                }
+            }
+
+            @media (hover: none) {
+                .man-u-box:active .devil-img {
+                    animation: updown 1s infinite ease-in-out;
+                }
+                .man-u-box:active .devil-img {
+                    animation: updown 2s infinite ease-in-out;
+                }
+                .man-u-box:active .ship-img {
+                    animation: wave-rock 2s infinite ease-in-out;
+                }
+                .absol-container:active .absol-img { 
+                    opacity: 0;transform: scale(0.5);
+                    transition: all 0.5s ease 0s;
+                }
+                .absol-container:active .mega-absol-img { 
+                    transition: all 0.5s ease 0.8s;
+                }
+                .absol-container:active .f1 { animation: parapara 0.2s forwards 0.0s; }
+                .absol-container:active .f2 { animation: parapara 0.2s forwards 0.1s; }
+                .absol-container:active .f3 { animation: parapara 0.2s forwards 0.2s; }
+                .absol-container:active .f4 { animation: parapara 0.2s forwards 0.3s; }
+                .absol-container:active .f5 { animation: parapara 0.2s forwards 0.4s; }
+                .absol-container:active .f6 { animation: parapara 0.2s forwards 0.5s; }
+                .absol-container:active .f7 { animation: parapara 0.2s forwards 0.6s; }
+                .absol-container:active .f8 { animation: parapara 0.2s forwards 0.7s; }
+                .absol-container:active .mega-absol-img {
+                    opacity: 1;
+                    transform: scale(1) rotate(0deg);
+                    filter: brightness(1);
+                    transition-delay: 0.8s;
+                }
+                #timer a:active {
+                    transform: scale(1.05);
+                    transition: transform 0.1s ease;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h1>
+            <div class="impact-text">
+                KANTA
+            </div>
+        </h1>
+
+        <div class="message-card">
+
+            <div class="normal-text">
+                親友だとおもってる。普段は相手にどう思われるか気にして言えないけど、
+            </div>
+
+            <div class="impact-text1">
+                莞太
+            </div>
+
+            <div class="normal-text" style="margin-bottom: 100px;">
+                は底知れなく優しいから言っちゃう。<br>これからもよろしくお願いします
+            </div>
+
+            <div class="man-u-box" ontouchstart="" style="-webkit-touch-callout: none; user-select: none;">
+                <img src="kanta1-1.png" class="ship-img" ontouchstart="" alt="帆船">
+                <img src="kanta1-2.png" class="wave-img" ontouchstart="" alt="波">
+                <img src="kanta1-3.png" class="devil-img" ontouchstart="" alt="キャラクター">
+            </div>
+            <div div class="absol-container" ontouchstart="">
+                <img src="kanta2-1.png" class="absol-img" alt="キャラクター">
+                <div class="effect-frames">
+                    <img src="Mega1.png" class="frame f1">
+                    <img src="Mega2.png" class="frame f2">
+                    <img src="Mega3.png" class="frame f3">
+                    <img src="Mega4.png" class="frame f4">
+                    <img src="Mega5.png" class="frame f5">
+                    <img src="Mega6.png" class="frame f6">
+                    <img src="Mega7.png" class="frame f7">
+                    <img src="Mega8.png" class="frame f8">
+                </div>
+                <img src="kanta2-2.png" class="mega-absol-img" alt="キャラクター">
+            </div>
+        </div>
+
+        <h2 id="countdown-title">
+            <div class="impact-text2">大阪旅行</div><div class="normal-text">まであと...</div>
+        </h2>
+
+        <div class="countdown-box">
+            <div id="timer">計算中...</div>
+        </div>
+
+        <script>
+            var targetDate = new Date("2026/03/19 00:00:00").getTime();
+
+            var x = setInterval(function() {
+                var now = new Date().getTime();
+                var distance = targetDate - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                if (distance > 0) {
+                    document.getElementById("timer").innerText = days + "日 " + hours + "時間 " + minutes + "分 " + seconds + "秒";
+                } else {
+                    clearInterval(x);
+                    document.getElementById("countdown-title").style.display = "none";
+                    document.getElementById("timer").innerHTML = '<a href="大阪.html" class="secret-link"> 大阪のしおり！ </a>';
+                }
+            }, 1000);
+        </script>
+    </body>
+</html>
