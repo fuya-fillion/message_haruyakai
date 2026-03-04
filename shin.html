@@ -98,7 +98,8 @@
             .normal-text {
                 font-family: 'BIZ UDPGothic', sans-serif;
                 font-size: 18px;
-                line-height: 1.8; 
+                line-height: 1.8;
+                z-index: 12;
             }
 
             .flex-container {
@@ -119,6 +120,7 @@
                 -webkit-user-select: none;
                 user-select: none; 
                 -webkit-user-drag: none;
+                z-index: 9;
             }
 
             .shin-left {
@@ -131,6 +133,7 @@
                 -webkit-user-select: none;
                 user-select: none; 
                 -webkit-user-drag: none;
+                z-index: 10;
             }
 
             .countdown-box {
@@ -189,14 +192,19 @@
                     font-size: 16px;
                 }
                 .shin-container {
-                    width: 360px;
+                    width: 300px;
+                    right: -150px;
+                    bottom: -150px;
+                }
+                .shin-right {
+                    width: 300px;
                     right: -80px;
-                    bottom: -50px;
+                    bottom: 0px;
                 }
                 .shin-left {
-                    width: 300px;
-                    left: -50px;
-                    bottom: -40px;
+                    width: 200px;
+                    left: -60px;
+                    bottom: 10px;
                 }
             }
 
@@ -215,7 +223,7 @@
                 }
                 .shin-container {
                     width: 400px;
-                    right: -80px;
+                    right: -100px;
                     bottom: -50px;
                 }
                 .shin-left {
