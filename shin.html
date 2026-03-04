@@ -309,6 +309,9 @@
             const startAnimation = () => {
             target.classList.add('is-walking');
             };
+            target.addEventListener('animationend', () => {
+            target.classList.remove('is-walking');
+            });
             target.addEventListener('mouseenter', startAnimation);
             target.addEventListener('touchstart', startAnimation);
         </script>
